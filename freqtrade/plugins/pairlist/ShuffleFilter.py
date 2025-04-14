@@ -52,8 +52,8 @@ class ShuffleFilter(IPairList):
         """
         Short whitelist method description - used for startup-messages
         """
-        return f"{self.name} - Shuffling pairs every {self._shuffle_freq}" + (
-            f", seed = {self._seed}." if self._seed is not None else "."
+        return f"{self.name} - 每 {self._shuffle_freq} 随机打乱交易对" + (
+            f", 种子值 = {self._seed}。" if self._seed is not None else "。"
         )
 
     @staticmethod

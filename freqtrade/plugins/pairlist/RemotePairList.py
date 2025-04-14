@@ -85,7 +85,9 @@ class RemotePairList(IPairList):
         """
         Short whitelist method description - used for startup-messages
         """
-        return f"{self.name} - {self._pairlistconfig['number_assets']} pairs from RemotePairlist."
+        return (
+            f"{self.name} - 从远程配对列表中获取 {self._pairlistconfig['number_assets']} 个交易对"
+        )
 
     @staticmethod
     def description() -> str:

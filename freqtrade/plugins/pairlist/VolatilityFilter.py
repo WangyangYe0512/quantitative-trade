@@ -68,9 +68,9 @@ class VolatilityFilter(IPairList):
         Short whitelist method description - used for startup-messages
         """
         return (
-            f"{self.name} - Filtering pairs with volatility range "
+            f"{self.name} - 过滤波动率在范围 "
             f"{self._min_volatility}-{self._max_volatility} "
-            f" the last {self._days} {plural(self._days, 'day')}."
+            f"内的交易对,基于过去 {self._days} {plural(self._days, '天')}的数据。"
         )
 
     @staticmethod

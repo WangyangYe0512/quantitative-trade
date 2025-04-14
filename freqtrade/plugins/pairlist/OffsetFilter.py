@@ -38,8 +38,8 @@ class OffsetFilter(IPairList):
         Short whitelist method description - used for startup-messages
         """
         if self._number_pairs:
-            return f"{self.name} - Taking {self._number_pairs} Pairs, starting from {self._offset}."
-        return f"{self.name} - Offsetting pairs by {self._offset}."
+            return f"{self.name} - 从偏移量 {self._offset} 开始选取 {self._number_pairs} 个交易对"
+        return f"{self.name} - 将交易对列表偏移 {self._offset} 个位置"
 
     @staticmethod
     def description() -> str:

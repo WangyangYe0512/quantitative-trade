@@ -63,11 +63,11 @@ class RangeStabilityFilter(IPairList):
         """
         max_rate_desc = ""
         if self._max_rate_of_change:
-            max_rate_desc = f" and above {self._max_rate_of_change}"
+            max_rate_desc = f" 和高于 {self._max_rate_of_change}"
         return (
-            f"{self.name} - Filtering pairs with rate of change below "
-            f"{self._min_rate_of_change}{max_rate_desc} over the "
-            f"last {plural(self._days, 'day')}."
+            f"{self.name} - 过滤变化率低于 "
+            f"{self._min_rate_of_change}{max_rate_desc} 的交易对,"
+            f"基于过去 {plural(self._days, '天')}的数据。"
         )
 
     @staticmethod

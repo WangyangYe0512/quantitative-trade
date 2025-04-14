@@ -64,10 +64,10 @@ class AgeFilter(IPairList):
         Short whitelist method description - used for startup-messages
         """
         return (
-            f"{self.name} - Filtering pairs with age less than "
-            f"{self._min_days_listed} {plural(self._min_days_listed, 'day')}"
+            f"{self.name} - 过滤上市天数少于 "
+            f"{self._min_days_listed} {plural(self._min_days_listed, '天')}"
         ) + (
-            (" or more than {self._max_days_listed} {plural(self._max_days_listed, 'day')}")
+            f" 或者多于 {self._max_days_listed} {plural(self._max_days_listed, '天')}"
             if self._max_days_listed
             else ""
         )

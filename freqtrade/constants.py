@@ -176,16 +176,16 @@ MINIMAL_CONFIG = {
 
 
 CANCEL_REASON = {
-    "TIMEOUT": "cancelled due to timeout",
-    "PARTIALLY_FILLED_KEEP_OPEN": "partially filled - keeping order open",
-    "PARTIALLY_FILLED": "partially filled",
-    "FULLY_CANCELLED": "fully cancelled",
-    "ALL_CANCELLED": "cancelled (all unfilled and partially filled open orders cancelled)",
-    "CANCELLED_ON_EXCHANGE": "cancelled on exchange",
-    "FORCE_EXIT": "forcesold",
-    "REPLACE": "cancelled to be replaced by new limit order",
-    "REPLACE_FAILED": "failed to replace order, deleting Trade",
-    "USER_CANCEL": "user requested order cancel",
+    "TIMEOUT": "因超时而取消",
+    "PARTIALLY_FILLED_KEEP_OPEN": "部分成交 - 保持订单开放",
+    "PARTIALLY_FILLED": "部分成交",
+    "FULLY_CANCELLED": "完全取消",
+    "ALL_CANCELLED": "已取消(所有未成交和部分成交的开放订单已取消)",
+    "CANCELLED_ON_EXCHANGE": "在交易所取消",
+    "FORCE_EXIT": "强制卖出",
+    "REPLACE": "取消以替换为新的限价订单",
+    "REPLACE_FAILED": "替换订单失败, 删除交易",
+    "USER_CANCEL": "用户请求取消订单",
 }
 
 # List of pairs with their timeframes

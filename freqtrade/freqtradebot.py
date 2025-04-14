@@ -325,11 +325,11 @@ class FreqtradeBot(LoggingMixin):
         if len(open_trades) != 0 and self.state != State.RELOAD_CONFIG:
             msg = {
                 "type": RPCMessageType.WARNING,
-                "status": f"{len(open_trades)} open trades active.\n\n"
-                f"Handle these trades manually on {self.exchange.name}, "
-                f"or '/start' the bot again and use '/stopentry' "
-                f"to handle open trades gracefully. \n"
-                f"{'Note: Trades are simulated (dry run).' if self.config['dry_run'] else ''}",
+                "status": f"{len(open_trades)} 个开放的交易活跃中。\n\n"
+                f"请在 {self.exchange.name} 上手动处理这些交易, "
+                f"或者再次使用 '/start' 启动机器人并使用 '/stopentry' "
+                f"来优雅地处理开放的交易。\n"
+                f"{'注意:交易是模拟的(模拟模式)。' if self.config['dry_run'] else ''}",
             }
             self.rpc.send_msg(msg)
 

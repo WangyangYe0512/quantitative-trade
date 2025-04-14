@@ -40,9 +40,7 @@ class SpreadFilter(IPairList):
         """
         Short whitelist method description - used for startup-messages
         """
-        return (
-            f"{self.name} - Filtering pairs with ask/bid diff above {self._max_spread_ratio:.2%}."
-        )
+        return f"{self.name} - 过滤卖价/买价差超过 {self._max_spread_ratio:.2%} 的交易对。"
 
     @staticmethod
     def description() -> str:

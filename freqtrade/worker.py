@@ -111,14 +111,14 @@ class Worker:
 
         if state == State.STOPPED:
             # Ping systemd watchdog before sleeping in the stopped state
-            self._notify("WATCHDOG=1\nSTATUS=State: STOPPED.")
+            self._notify("WATCHDOG=1\nSTATUS=状态: 已停止.")
 
             self._throttle(func=self._process_stopped, throttle_secs=self._throttle_secs)
 
         elif state in (State.RUNNING, State.PAUSED):
-            state_str = "RUNNING" if state == State.RUNNING else "PAUSED"
+            state_str = "运行中" if state == State.RUNNING else "暂停"
             # Ping systemd watchdog before throttling
-            self._notify(f"WATCHDOG=1\nSTATUS=State: {state_str}.")
+            self._notify(f"WATCHDOG=1\nSTATUS=状态: {state_str}.")
 
             # Use an offset of 1s to ensure a new candle has been issued
             self._throttle(
@@ -135,9 +135,7 @@ class Worker:
                 strategy_version = self.freqtrade.strategy.version()
                 if strategy_version is not None:
                     version += ", strategy_version: " + strategy_version
-                logger.info(
-                    f"Bot heartbeat. PID={getpid()}, version='{version}', state='{state.name}'"
-                )
+                logger.info(f"机器人心跳. PID={getpid()}, 版本='{version}', 状态='{state.name}'")
                 self._heartbeat_msg = now
 
         return state
@@ -202,7 +200,7 @@ class Worker:
             time.sleep(RETRY_TIMEOUT)
         except OperationalException:
             tb = traceback.format_exc()
-            hint = "Issue `/start` if you think it is safe to restart."
+            hint = "如果您认为重启是安全的,请发送 `/start`。"
 
             self.freqtrade.notify_status(
                 f"*OperationalException:*\n```\n{tb}```\n {hint}", msg_type=RPCMessageType.EXCEPTION
@@ -235,5 +233,5 @@ class Worker:
         self._notify("STOPPING=1")
 
         if self.freqtrade:
-            self.freqtrade.notify_status("process died")
+            self.freqtrade.notify_status("进程已终止")
             self.freqtrade.cleanup()

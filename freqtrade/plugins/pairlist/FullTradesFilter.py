@@ -28,7 +28,7 @@ class FullTradesFilter(IPairList):
         """
         Short allowlist method description - used for startup-messages
         """
-        return f"{self.name} - Shrink whitelist when trade slots are full."
+        return f"{self.name} - 当交易槽位已满时缩减白名单。"
 
     @staticmethod
     def description() -> str:

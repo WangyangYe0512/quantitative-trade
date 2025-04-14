@@ -191,7 +191,7 @@ class RPC:
             trades = Trade.get_open_trades()
 
         if not trades:
-            raise RPCException("no active trade")
+            raise RPCException("没有活跃的交易")
         else:
             results = []
             for trade in trades:
@@ -293,7 +293,7 @@ class RPC:
         """
         nonspot = self._config.get("trading_mode", TradingMode.SPOT) != TradingMode.SPOT
         if not Trade.get_open_trades():
-            raise RPCException("no active trade")
+            raise RPCException("没有活跃的交易")
 
         trades_list = []
         fiat_profit_sum = nan
@@ -387,7 +387,7 @@ class RPC:
             return timedelta(**{timeunit: step})
 
         if not (isinstance(timescale, int) and timescale > 0):
-            raise RPCException("timescale must be an integer greater than 0")
+            raise RPCException("timescale 必须是大于 0 的整数")
 
         profit_units: dict[date, dict] = {}
         daily_stake = self._freqtrade.wallets.get_total_stake_amount()
@@ -831,23 +831,23 @@ class RPC:
     def _rpc_start(self) -> dict[str, str]:
         """Handler for start"""
         if self._freqtrade.state == State.RUNNING:
-            return {"status": "already running"}
+            return {"status": "已经在运行中"}
 
         self._freqtrade.state = State.RUNNING
-        return {"status": "starting trader ..."}
+        return {"status": "正在启动交易者..."}
 
     def _rpc_stop(self) -> dict[str, str]:
         """Handler for stop"""
         if self._freqtrade.state != State.STOPPED:
             self._freqtrade.state = State.STOPPED
-            return {"status": "stopping trader ..."}
+            return {"status": "正在停止交易者..."}
 
-        return {"status": "already stopped"}
+        return {"status": "已经停止"}
 
     def _rpc_reload_config(self) -> dict[str, str]:
         """Handler for reload_config."""
         self._freqtrade.state = State.RELOAD_CONFIG
-        return {"status": "Reloading config ..."}
+        return {"status": "正在重新加载配置..."}
 
     def _rpc_pause(self) -> dict[str, str]:
         """
@@ -858,16 +858,9 @@ class RPC:
 
         if self._freqtrade.state == State.STOPPED:
             self._freqtrade.state = State.PAUSED
-            return {
-                "status": (
-                    "starting bot with trader in paused state, no entries will occur. "
-                    "Run /start to enable entries."
-                )
-            }
+            return {"status": ("以暂停状态启动机器人,不会进行新入场。运行 /start 来启用入场。")}
 
-        return {
-            "status": "paused, no more entries will occur from now. Run /start to enable entries."
-        }
+        return {"status": "已暂停,从现在起不会进行新入场。运行 /start 来启用入场。"}
 
     def _rpc_reload_trade_from_exchange(self, trade_id: int) -> dict[str, str]:
         """

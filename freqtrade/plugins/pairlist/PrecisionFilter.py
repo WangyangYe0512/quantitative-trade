@@ -43,7 +43,7 @@ class PrecisionFilter(IPairList):
         """
         Short whitelist method description - used for startup-messages
         """
-        return f"{self.name} - Filtering untradable pairs."
+        return f"{self.name} - 过滤无法交易的币对。"
 
     @staticmethod
     def description() -> str:

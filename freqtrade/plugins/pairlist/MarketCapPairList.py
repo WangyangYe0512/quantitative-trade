@@ -79,7 +79,7 @@ class MarketCapPairList(IPairList):
         """
         num = self._number_assets
         rank = self._max_rank
-        msg = f"{self.name} - {num} pairs placed within top {rank} market cap."
+        msg = f"{self.name} - 从市值排名前 {rank} 中选取 {num} 个交易对"
         return msg
 
     @staticmethod

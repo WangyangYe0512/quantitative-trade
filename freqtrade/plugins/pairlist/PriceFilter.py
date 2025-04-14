@@ -52,18 +52,18 @@ class PriceFilter(IPairList):
         """
         active_price_filters = []
         if self._low_price_ratio != 0:
-            active_price_filters.append(f"below {self._low_price_ratio:.1%}")
+            active_price_filters.append(f"低于 {self._low_price_ratio:.1%}")
         if self._min_price != 0:
-            active_price_filters.append(f"below {self._min_price:.8f}")
+            active_price_filters.append(f"低于 {self._min_price:.8f}")
         if self._max_price != 0:
-            active_price_filters.append(f"above {self._max_price:.8f}")
+            active_price_filters.append(f"高于 {self._max_price:.8f}")
         if self._max_value != 0:
-            active_price_filters.append(f"Value above {self._max_value:.8f}")
+            active_price_filters.append(f"价值高于 {self._max_value:.8f}")
 
         if len(active_price_filters):
-            return f"{self.name} - Filtering pairs priced {' or '.join(active_price_filters)}."
+            return f"{self.name} - 过滤价格{' 或 '.join(active_price_filters)}的交易对。"
 
-        return f"{self.name} - No price filters configured."
+        return f"{self.name} - 未配置价格过滤器。"
 
     @staticmethod
     def description() -> str:

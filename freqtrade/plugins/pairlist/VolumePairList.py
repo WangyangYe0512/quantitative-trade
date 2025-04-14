@@ -115,7 +115,7 @@ class VolumePairList(IPairList):
         """
         Short whitelist method description - used for startup-messages
         """
-        return f"{self.name} - top {self._pairlistconfig['number_assets']} volume pairs."
+        return f"{self.name} - 按交易量排名前 {self._pairlistconfig['number_assets']} 的交易对。"
 
     @staticmethod
     def description() -> str:

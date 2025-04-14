@@ -38,7 +38,7 @@ class PerformanceFilter(IPairList):
         """
         Short allowlist method description - used for startup-messages
         """
-        return f"{self.name} - Sorting pairs by performance."
+        return f"{self.name} - 按照性能对交易对进行排序。"
 
     @staticmethod
     def description() -> str:
